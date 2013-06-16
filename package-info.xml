@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<!DOCTYPE package-info SYSTEM "http://www.simplemachines.org/xml/package-info">
+<package-info xmlns="http://www.simplemachines.org/xml/package-info" xmlns:smf="http://www.simplemachines.org/">
+	<name>ROI Member Loot</name>
+	<id>corlen:ROIMemberLoot</id>
+	<type>modification</type>
+	<version>1.0</version>
+
+	<install>
+		<readme type="file">readme.txt</readme>
+		<database type="file">install-plugin.php</database>
+		<require-file name="Subs-ROIMemberLoot.php" destination="$sourcedir" />
+		<require-file name="ROIMemberLoot.template.php" destination="$themedir" />
+		<require-dir name="google-api" destination="$sourcedir" />
+	</install>
+	
+	<uninstall>
+		<database type="file">uninstall-plugin.php</database>
+		<remove-file name="$sourcedir/Subs-ROIMemberLoot.php" />
+		<remove-dir name="$sourcedir/google-api" />
+		<remove-file name="$themedir/ROIMemberLoot.template.php" />
+	</uninstall>
+</package-info>

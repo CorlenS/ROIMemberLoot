@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="MyProject" basedir="." default="main">
+	<target name="main">
+		<zip destfile="ROIMemberLoot.zip">
+			<zipfileset dir="google-api" prefix="google-api" />
+			<fileset dir="." includes="install-plugin.php"/>
+			<fileset dir="." includes="package-info.xml"/>
+			<fileset dir="." includes="readme.txt"/>
+			<fileset dir="." includes="ROIMemberLoot.template.php"/>
+			<fileset dir="." includes="Subs-ROIMemberLoot.php"/>
+			<fileset dir="." includes="uninstall-plugin.php"/>
+		</zip>
+	</target>
+</project>
