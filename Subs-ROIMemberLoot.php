@@ -4,7 +4,7 @@ require_once 'google-api/src/contrib/Google_DriveService.php';
 
 // Path to the .p12 key file. This should be in a location not accessable to
 // the public web.
-const KEY_FILE = '/home/guildund/c397649304793c9ac6d1ba9641d224ca0d1e9cf4-privatekey.p12';
+const KEY_FILE = '/home/starbuck/www/roiguild.org/c397649304793c9ac6d1ba9641d224ca0d1e9cf4-privatekey.p12';
 
 // Set your client id, service account name, and the path to your private key.
 // For more information about obtaining these keys, visit:
