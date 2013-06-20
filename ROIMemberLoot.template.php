@@ -13,7 +13,7 @@ function template_main()
 	global $context;
 
 	$summaryLabelStyle = "text-align: right; padding-left:10px;";
-	$lootSummaryTdStart = "<td style=\"border-bottom: 1px solid black; padding-right:10px;\">";
+	$lootSummaryTdStart = "<td style=\"border-bottom: 1px solid #61708E; padding-right:10px;\">";
 
 	// Generate the page - this is pretty much a mess...
 	// Should look into seeing how to tie a CSS page into the forum plugin
