@@ -32,6 +32,45 @@ function dumpClean($var) {
 	echo "<br/><br/>";
 }
 
+// Function taken from http://php.net/manual/en/function.sort.php
+function array_qsort (&$array, $column=0, $order=SORT_ASC, $first=0, $last= -2)
+{
+	// $array  - the array to be sorted
+	// $column - index (column) on which to sort
+	//          can be a string if using an associative array
+	// $order  - SORT_ASC (default) for ascending or SORT_DESC for descending
+	// $first  - start index (row) for partial array sort
+	// $last  - stop  index (row) for partial array sort
+	// $keys  - array of key values for hash array sort
+
+	$keys = array_keys($array);
+	if($last == -2) $last = count($array) - 1;
+	if($last > $first) {
+		$alpha = $first;
+		$omega = $last;
+		$key_alpha = $keys[$alpha];
+		$key_omega = $keys[$omega];
+		$guess = $array[$key_alpha][$column];
+		while($omega >= $alpha) {
+			if($order == SORT_ASC) {
+				while($array[$key_alpha][$column] < $guess) {$alpha++; $key_alpha = $keys[$alpha]; }
+				while($array[$key_omega][$column] > $guess) {$omega--; $key_omega = $keys[$omega]; }
+			} else {
+				while($array[$key_alpha][$column] > $guess) {$alpha++; $key_alpha = $keys[$alpha]; }
+				while($array[$key_omega][$column] < $guess) {$omega--; $key_omega = $keys[$omega]; }
+			}
+			if($alpha > $omega) break;
+			$temporary = $array[$key_alpha];
+			$array[$key_alpha] = $array[$key_omega]; $alpha++;
+			$key_alpha = $keys[$alpha];
+			$array[$key_omega] = $temporary; $omega--;
+			$key_omega = $keys[$omega];
+		}
+		array_qsort ($array, $column, $order, $first, $omega);
+		array_qsort ($array, $column, $order, $alpha, $last);
+	}
+}
+
 // Initializes the google client object. Sets all the various
 // credentials for logging in with the service account.
 function initializeClient() {
@@ -175,7 +214,11 @@ function ROIMemberLoot_view_loot() {
 				// Loop over our actual loots and build the various information variables
 				for($i = 1; $i < count($arrContent); $i++) {
 					if($arrContent[$i]) {
+						// Get the loot record
 						$tmp = str_getcsv($arrContent[$i]);
+						
+						// Determine the time of the loot - this can be used for sorting
+						$tmp[COL_LOOT_TIME] = strtotime($tmp[COL_LOOT_DATE]);
 						
 						// Add this loot into the final loot array
 						array_push($loot, $tmp);
@@ -184,7 +227,7 @@ function ROIMemberLoot_view_loot() {
 						// to the real loot totals
 						if(!$tmp[COL_IS_ROT] && !$tmp[COL_IS_ALT]) {
 							// Figure out the last loot date here
-							if(strtotime($lastLootDate) < strtotime($tmp[COL_LOOT_DATE]))
+							if(strtotime($lastLootDate) < $tmp[COL_LOOT_TIME])
 								$lastLootDate =  $tmp[COL_LOOT_DATE];
 							
 							// Get the tier this loot is from an add it to the tier counts
@@ -204,6 +247,11 @@ function ROIMemberLoot_view_loot() {
 							$totalAlts++;
 						}
 					}
+				}
+				
+				// Sort the loot array by loot time descending
+				if(count($loot)) {
+					array_qsort($loot, COL_LOOT_TIME, SORT_DESC);
 				}
 			}
 		}
