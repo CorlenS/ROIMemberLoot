@@ -1,5 +1,5 @@
 **************************************************
-	    ROI Member Loot v1.0
+	    ROI Member Loot v1.1
 **************************************************
 Installation Notes:
 +++++++++++++++++++
@@ -20,3 +20,12 @@ to the ROI Roster google doc, then they will be
 to see their loot.
 
 Tested on Version 2.X
+
+
+
+Change Log:
++++++++++++
+
+v1.1
+====
+- Added a default sort on loot date descending
