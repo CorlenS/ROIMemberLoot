@@ -23,6 +23,8 @@ const COL_ITEM = 3;
 const COL_SLOT = 4;
 const COL_IS_ROT = 5;
 const COL_IS_ALT = 6;
+const COL_LOOT_TIME = 7;
+const COL_LOOT_TIER = 8;
 
 // Debug function. Prints arrays and objects cleanly.
 function dumpClean($var) {
@@ -155,9 +157,10 @@ function ROIMemberLoot_view_loot() {
 	global $smcFunc;
 	global $context;
 	global $user_info;
+	global $settings;
 
 	// Load the custom template
-	loadTemplate('ROIMemberLoot');
+	loadTemplate('ROIMemberLoot', array('ROIMemberLoot'));
 	
 	// Initialize the client
 	global $client;
@@ -181,6 +184,13 @@ function ROIMemberLoot_view_loot() {
 		// Get the members Name out of the roster
 		$rosterInfo = str_getcsv($arrContent[1]);
 		$name = $rosterInfo[0];
+		$globalViewer = $rosterInfo[5] == "Yes" ? true : false;
+		
+		// If the user is a global viewer and ROIMemberSelect is set, change
+		// the query to use the selected name
+		if($globalViewer && isset($_GET['ROIMemberSelect']) && $_GET['ROIMemberSelect']) {
+			$name = $_GET['ROIMemberSelect'];
+		}
 		
 		// Get the content from the Loot Sheet
 		$content = querySheet(LOOT_ID, "select%20*%20where%20B%20%3D%20'" . $name . "'");
@@ -220,8 +230,9 @@ function ROIMemberLoot_view_loot() {
 						// Determine the time of the loot - this can be used for sorting
 						$tmp[COL_LOOT_TIME] = strtotime($tmp[COL_LOOT_DATE]);
 						
-						// Add this loot into the final loot array
-						array_push($loot, $tmp);
+						// Get the loot tier from the events array
+						$lootTier = $eventsArr[$tmp[COL_EVENT]];
+						$tmp[COL_LOOT_TIER] = $lootTier;
 							
 						// If this is a non rot, non alt loot, then add it
 						// to the real loot totals
@@ -231,7 +242,7 @@ function ROIMemberLoot_view_loot() {
 								$lastLootDate =  $tmp[COL_LOOT_DATE];
 							
 							// Get the tier this loot is from an add it to the tier counts
-							$tierCounts[$eventsArr[$tmp[COL_EVENT]]]++;
+							$tierCounts[$lootTier]++;
 							
 							// Increment our total loot count
 							$totalLoots++;
@@ -246,6 +257,9 @@ function ROIMemberLoot_view_loot() {
 						if($tmp[COL_IS_ALT]) {
 							$totalAlts++;
 						}
+						
+						// Add this loot into the final loot array
+						array_push($loot, $tmp);
 					}
 				}
 				
@@ -254,6 +268,19 @@ function ROIMemberLoot_view_loot() {
 					array_qsort($loot, COL_LOOT_TIME, SORT_DESC);
 				}
 			}
+		}
+		
+		// If this person is a global viewer, get the full list of active names
+		// in the roster. This will be used so the global viewer can see other members loot
+		if($globalViewer) {
+			$rosterNames = explode("\n", querySheet(ROSTER_ID, "select%20A%20where%20D%20%3D%20'Yes'"));
+			// Remove the first and last elements - they don't real data
+			unset($rosterNames[count($rosterNames) - 1]);
+			unset($rosterNames[0]);
+			
+			$rosterNames = str_replace("\"", "", $rosterNames);
+			
+			asort($rosterNames);
 		}
 	} else {
 		// Couldn't get the initial mapping from logged in user to real
@@ -270,6 +297,10 @@ function ROIMemberLoot_view_loot() {
 	$context['total_alts'] = $totalAlts;
 	$context['tier_counts'] = $tierCounts;
 	$context['loot'] = $loot;
+	$context['page_title'] = "Viewing loot for " . $name;
+	$context['html_headers'] .= "\n<script type=\"text/javascript\" src=\"" . $settings['default_theme_url'] . "/scripts/" . "ROIMemberLoot.js" . "\"></script>\n";
+	$context['global_viewer'] = $globalViewer;
+	$context['roster_names'] = $rosterNames;
 	
 }
 ?>

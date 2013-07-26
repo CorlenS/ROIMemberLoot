@@ -1,0 +1,113 @@
+/* Class which will encompass all items
+   Set the background color and center the main block inside
+   the page */
+.ROILootAllItems {
+	background-color: rgb(0, 0, 0);
+	width: 50%;
+	margin-left: auto;
+	margin-right: auto;
+	text-align: center;
+}
+
+/* Center all tables */
+.ROILootAllItems table {
+	margin-left: auto;
+	margin-right: auto;
+}
+
+/* Set the text color for everything */
+.ROILootAllItems * {
+	color: rgb(221, 221, 221);
+}
+
+/* Main header CSS */
+.ROILootAllItems h1 {
+	font-size: 2em;
+	padding-bottom: 0.5em;
+	padding-top: 0.5em;
+}
+
+/* Sub Header CSS */
+.ROILootAllItems h2 {
+	font-size: 1.5em;
+	padding-bottom: 0.5em;
+	padding-top: 0.5em;
+}
+
+/* Core Summary Table CSS */
+.ROILootSummaryTable {
+	padding-left: 10px;
+}
+
+/* Summary header row CSS */
+.ROILootSummaryTable th {
+	text-align: center;
+	text-decoration: underline;
+}
+
+/* Align the labels right */
+.ROILootSummaryTableLabel {
+	text-align: right;
+}
+
+/* Align the data left */
+.ROILootSummaryTableData {
+	text-align: left;
+}
+
+/* Core loot table CSS */
+.ROILootTable {
+	text-align: left;
+	border-collapse: collapse;
+	width: 90%;
+}
+
+/* Define the borders for the loot table */
+.ROILootTable td,.ROILootTable th {
+	border: 1px solid #61708E;
+	padding-right: 10px;
+}
+
+/* Add a hover element background */
+.ROILootTable tr:hover {
+	background-color: rgb(100, 100, 100);
+}
+
+/* Header row CSS */
+.ROILootTable th {
+	background-color: rgb(84, 84, 84);
+	border-bottom: 3px solid #61708E;
+}
+
+/* Alternate 1 background color */
+.ROILootTableAlt1 {
+	background-color: rgb(64, 64, 64);
+}
+
+/* Alternate 2 background color */
+.ROILootTableAlt2 {
+	background-color: rgb(48, 48, 48);
+}
+
+/* Tier selection combo box - change it to black font */
+#tierFilter {
+	width: 50px;
+	color: rgb(0, 0, 0);
+}
+
+#tierFilter * {
+	color: rgb(0, 0, 0);
+}
+
+/* Filter input objects */
+#filterSpan {
+	padding-bottom: 5px;
+}
+
+#ROIMemberSelect {
+	color: rgb(0, 0, 0);
+}
+
+#ROIMemberSelect * {
+	color: rgb(0, 0, 0);
+}

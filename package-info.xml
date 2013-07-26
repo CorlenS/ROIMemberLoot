@@ -4,13 +4,15 @@
 	<name>ROI Member Loot</name>
 	<id>corlen:ROIMemberLoot</id>
 	<type>modification</type>
-	<version>1.0</version>
+	<version>2.0</version>
 
 	<install>
 		<readme type="file">readme.txt</readme>
 		<database type="file">install-plugin.php</database>
 		<require-file name="Subs-ROIMemberLoot.php" destination="$sourcedir" />
 		<require-file name="ROIMemberLoot.template.php" destination="$themedir" />
+		<require-file name="ROIMemberLoot.css" destination="$themedir/css" />
+		<require-file name="ROIMemberLoot.js" destination="$themedir/scripts" />
 		<require-dir name="google-api" destination="$sourcedir" />
 	</install>
 	
@@ -19,5 +21,7 @@
 		<remove-file name="$sourcedir/Subs-ROIMemberLoot.php" />
 		<remove-dir name="$sourcedir/google-api" />
 		<remove-file name="$themedir/ROIMemberLoot.template.php" />
+		<remove-file name="$themedir/css/ROIMemberLoot.css" />
+		<remove-file name="$themedir/scripts/ROIMemberLoot.js" />
 	</uninstall>
 </package-info>

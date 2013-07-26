@@ -1,5 +1,5 @@
 **************************************************
-	    ROI Member Loot v1.1
+	    ROI Member Loot v2.0
 **************************************************
 Installation Notes:
 +++++++++++++++++++
@@ -25,6 +25,20 @@ Tested on Version 2.X
 
 Change Log:
 +++++++++++
+
+v2.0
+====
+- Added real styling to the template file.
+  ROIMemberLoot.css file is now included.
+- Added JavaScript filtering abilities inside the
+  template file. You can now filter on the tier,
+  Rots, or Alt loots.
+  ROIMemberLoot.js is now included.
+- Added a Global Viewer status to the roster. When
+  A user has this privledge, they will be able to
+  select any active member from the roster to see
+  their loot.
+
 
 v1.1
 ====

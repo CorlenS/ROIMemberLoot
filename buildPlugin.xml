@@ -7,6 +7,8 @@
 			<fileset dir="." includes="package-info.xml"/>
 			<fileset dir="." includes="readme.txt"/>
 			<fileset dir="." includes="ROIMemberLoot.template.php"/>
+			<fileset dir="." includes="ROIMemberLoot.css"/>
+			<fileset dir="." includes="ROIMemberLoot.js"/>
 			<fileset dir="." includes="Subs-ROIMemberLoot.php"/>
 			<fileset dir="." includes="uninstall-plugin.php"/>
 		</zip>
