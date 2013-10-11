@@ -54,7 +54,7 @@ function template_main()
 	
 	foreach($context['tier_counts'] as $key => $value) {
 		echo "	<tr>\n";
-		echo "		<td class=\"ROILootSummaryTableLabel\">Tier ", $key, " Count:</td>\n";
+		echo "		<td class=\"ROILootSummaryTableLabel\">", $key, " Count:</td>\n";
 		echo "		<td class=\"ROILootSummaryTableData\">", $value, "</td>\n";
 		echo "		<td>&nbsp;</td>\n";
 		echo "	</tr>\n";
@@ -69,9 +69,14 @@ function template_main()
 	echo "Tier: ";
 	echo "<select id=\"tierFilter\" name=\"tierFilter\" onChange=\"updateLootFilters('tierFilter');\">\n";
 	echo "<option>All</option>\n";
+
+	// Selected variable - the first real tier in the option list will be selected
+	$isSelected = " selected='selected' ";
 	foreach($context['tier_counts'] as $key => $value) {
-		echo "<option>", $key, "</option>\n";
+		echo "<option", $isSelected, ">", $key, "</option>\n";
+		$isSelected = "";
 	}
+
 	echo "</select>\n";
 	echo "&nbsp;";
 	echo "Include Rots: ";
@@ -114,6 +119,8 @@ function template_main()
 	echo "<input type=\"hidden\" id=\"numLoot\" name=\"numLoot\" value=\"", $idCount, "\" />";
 	echo "<br/>\n";
 	echo "</div>\n";
+
+	echo "<script type=\"text/javascript\">updateLootFilters('tierFilter');</script>\n";
 }
 
 ?>
