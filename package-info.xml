@@ -1,27 +1,31 @@
 <?xml version="1.0"?>
 <!DOCTYPE package-info SYSTEM "http://www.simplemachines.org/xml/package-info">
-<package-info xmlns="http://www.simplemachines.org/xml/package-info" xmlns:smf="http://www.simplemachines.org/">
-	<name>ROI Member Loot</name>
+<package-info xmlns="http://www.simplemachines.org/xml/package-info"
+	xmlns:smf="http://www.simplemachines.org/">
 	<id>corlen:ROIMemberLoot</id>
+	<name>ROI Member Loot</name>
 	<type>modification</type>
-	<version>2.0</version>
+	<version>3.0</version>
 
 	<install>
 		<readme type="file">readme.txt</readme>
 		<database type="file">install-plugin.php</database>
+		<require-dir name="google-api" destination="$sourcedir" />
 		<require-file name="Subs-ROIMemberLoot.php" destination="$sourcedir" />
-		<require-file name="ROIMemberLoot.template.php" destination="$themedir" />
+		<require-file name="ROIMemberLoot.template.php"
+			destination="$themedir" />
 		<require-file name="ROIMemberLoot.css" destination="$themedir/css" />
 		<require-file name="ROIMemberLoot.js" destination="$themedir/scripts" />
-		<require-dir name="google-api" destination="$sourcedir" />
+		<require-file name="jquery-2.1.1.min.js" destination="$themedir/scripts" />
 	</install>
-	
+
 	<uninstall>
 		<database type="file">uninstall-plugin.php</database>
-		<remove-file name="$sourcedir/Subs-ROIMemberLoot.php" />
 		<remove-dir name="$sourcedir/google-api" />
+		<remove-file name="$sourcedir/Subs-ROIMemberLoot.php" />
 		<remove-file name="$themedir/ROIMemberLoot.template.php" />
 		<remove-file name="$themedir/css/ROIMemberLoot.css" />
 		<remove-file name="$themedir/scripts/ROIMemberLoot.js" />
+		<remove-file name="$themedir/scripts/jquery-2.1.1.min.js" />
 	</uninstall>
 </package-info>

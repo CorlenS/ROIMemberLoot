@@ -26,6 +26,25 @@ Tested on Version 2.X
 Change Log:
 +++++++++++
 
+v3.0
+====
+- Addition of Attendance on the page
+- Username check will be case insensitive. This will make
+  it less cumbersome to add new people
+- A better error message will be displayed if you don't
+  have access
+- Changing the tier selection to multiselect so you can
+  see loot across multiple tiers
+- The loot summary section with the totals will display
+  based on the tiers you have selected (That's how we
+  view loot anyways not overall totals)
+- Last loot date will function based on your tiers selected
+- Alts/rot counts will function based on your tiers selected
+- Will add in an Alt last loot date based on tiers selected
+- Whatever visual improvements I see fit (I'm not that great
+  with styling/UI though)
+- May add in visible/non-visible/weapon totals based on tier selection
+
 v2.0
 ====
 - Added real styling to the template file.

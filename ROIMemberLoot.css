@@ -63,7 +63,7 @@
 }
 
 /* Define the borders for the loot table */
-.ROILootTable td,.ROILootTable th {
+.ROILootTable td, .ROILootTable th {
 	border: 1px solid #61708E;
 	padding-right: 10px;
 }
@@ -89,9 +89,26 @@
 	background-color: rgb(48, 48, 48);
 }
 
+/* Generic error formatting */
+.ROIError {
+	color: red;
+}
+
+/* Formatting for the Attendance span */
+.ROIAttendance {
+	display: inline;
+	padding-top: 10px;
+	padding-bottom: 10px;
+}
+
+.ROIAttendance div {
+	display: inline;
+	padding-right: 25px;
+}
+
 /* Tier selection combo box - change it to black font */
 #tierFilter {
-	width: 75px;
+	width: 100px;
 	color: rgb(0, 0, 0);
 	background-color: rgb(255, 255, 255);
 }
