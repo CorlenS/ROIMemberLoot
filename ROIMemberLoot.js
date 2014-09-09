@@ -22,8 +22,8 @@ function updateLootFilters(invokerName) {
 	var altClass = "";
 
 	// Set the array of tiers selected
+	var idx = 0;
 	for (var i = 0; i < tierOpts.length; i++) {
-		var idx = 0;
 		if(tierOpts[i].selected) {
 			tiersSelected[idx++] = tierOpts[i].value;
 		}
