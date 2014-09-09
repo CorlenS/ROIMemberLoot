@@ -1,7 +1,6 @@
 <?xml version="1.0"?>
 <!DOCTYPE package-info SYSTEM "http://www.simplemachines.org/xml/package-info">
-<package-info xmlns="http://www.simplemachines.org/xml/package-info"
-	xmlns:smf="http://www.simplemachines.org/">
+<package-info xmlns="http://www.simplemachines.org/xml/package-info" xmlns:smf="http://www.simplemachines.org/">
 	<id>corlen:ROIMemberLoot</id>
 	<name>ROI Member Loot</name>
 	<type>modification</type>
@@ -12,8 +11,7 @@
 		<database type="file">install-plugin.php</database>
 		<require-dir name="google-api" destination="$sourcedir" />
 		<require-file name="Subs-ROIMemberLoot.php" destination="$sourcedir" />
-		<require-file name="ROIMemberLoot.template.php"
-			destination="$themedir" />
+		<require-file name="ROIMemberLoot.template.php" destination="$themedir" />
 		<require-file name="ROIMemberLoot.css" destination="$themedir/css" />
 		<require-file name="ROIMemberLoot.js" destination="$themedir/scripts" />
 		<require-file name="jquery-2.1.1.min.js" destination="$themedir/scripts" />
