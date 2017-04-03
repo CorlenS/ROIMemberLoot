@@ -171,8 +171,7 @@ function submitForm() {
 }
 
 function registerAttendance() {
-	var url = "http://guildundertow.com/json.txt";
-	// var url = "http://roiguild.org/dkp/viewmembers.php";
+	var url = "http://dkp.roiguild.org/viewmembers.php";
 
 	try {
 		var playerName = document.getElementById("playerName").value
